@@ -1,18 +1,28 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="articles">
-  <h2>Articles</h2>
-  <ul>
-    {% for article in articles %}
-    <li>
-      <h3>{{ article.author}}</h3>
-      <h4>{{ article.title}}</h4>
-      <p>{{ article.content}}</p>
-      <small>{{ article.created_date}}</small>
-    </li>
-    <hr />
-    {% endfor %}
-  </ul>
+<div class="container">
+  <div class="card_container">
+    <ul class="card_lists">
+
+      {% for article in articles %} 
+      {% if article.is_active %}
+
+      <li class="card">
+        <h2 class="card_title">{{ article.title}}</h2>
+        <p class="card_content">{{ article.content}}</p>
+
+        <div class="card_footer">
+          <p>{{ article.created_date}}</p>
+          <p>{{ article.author}}</p>
+        </div>
+        <p></p>
+      </li>
+      
+      {% endif %} 
+      {% endfor %}
+      
+    </ul>
+  </div>
 </div>
 
 {% endblock content %}
